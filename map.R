@@ -35,7 +35,7 @@ leaflet(roadFile) %>%
                    overlayGroups = c('FS Roads'),
                    options=layersControlOptions(collapsed=T),
                    position='topleft') %>%
-  addLegend(pal = pal, values = ~Use, position = "bottomleft") %>%
+  addLegend(pal = pal, values = ~Use, position = "topright") %>%
   inlmisc::AddSearchButton(group = "FS Roads", zoom = 15, #propertyName = "label",
                            textPlaceholder = "Search Road Names") 
 
@@ -51,7 +51,8 @@ CreateWebMap(maps = c("Topo","Imagery"), collapsed = TRUE) %>%
   addLayersControl(baseGroups=c("Topo",'Imagery'),
                    overlayGroups = c('FS Roads'),
                    options=layersControlOptions(collapsed=T),
-                   position='topleft')# %>%
-  #inlmisc::AddHomeButton(raster::extent(-83.89, -74.80, 36.54, 39.98), position = "topleft") %>%
+                   position='topleft') %>%
+  addLegend(data = roadFile, pal = pal, values = ~Use, position = "topright") %>%
+  inlmisc::AddHomeButton(raster::extent(-80.60, -80.20, 37.20, 37.30), position = "topleft")# %>%
   #inlmisc::AddSearchButton(group = "FS Roads", zoom = 15, #propertyName = "label",
   #                         textPlaceholder = "Search Road Names") 
